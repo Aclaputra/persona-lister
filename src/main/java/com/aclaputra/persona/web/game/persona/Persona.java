@@ -1,6 +1,7 @@
 package com.aclaputra.persona.web.game.persona;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "personas")
@@ -44,5 +45,18 @@ public class Persona {
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Persona persona = (Persona) o;
+        return Objects.equals(id, persona.id) && Objects.equals(name, persona.name) && Objects.equals(type, persona.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, type);
     }
 }
