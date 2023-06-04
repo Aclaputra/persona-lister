@@ -9,5 +9,4 @@ class PersonaWebGameApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
