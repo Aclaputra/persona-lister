@@ -13,6 +13,8 @@ public class Character {
     private String name;
     @Column(name = "character_location",  length = 100, unique = false)
     private String location;
+    @Column(name = "character_image")
+    private String image;
 
     public Long getId() {
         return id;
@@ -38,13 +40,12 @@ public class Character {
         this.location = location;
     }
 
-    @Override
-    public String toString() {
-        return "character{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                '}';
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
@@ -52,11 +53,21 @@ public class Character {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Character character = (Character) o;
-        return Objects.equals(id, character.id) && Objects.equals(name, character.name) && Objects.equals(location, character.location);
+        return Objects.equals(id, character.id) && Objects.equals(name, character.name) && Objects.equals(location, character.location) && Objects.equals(image, character.image);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, location);
+        return Objects.hash(id, name, location, image);
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

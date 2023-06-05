@@ -1,34 +1,21 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import "./api/CharacterAPI";
 import './App.css';
+// @ts-ignore
+import * as CharacterAPI from 'api/CharacterAPI';
+import {Home} from "./pages/Home";
+import {CharacterList} from "./pages/CharacterList";
+import {PersonaList} from "./pages/PersonaList";
 
-class App extends Component {
-  state = {
-      message: ""
-  };
-
-  componentDidMount(): void {
-    setInterval(this.springData,250);
-  }
-
-  springData = (): void => {
-    fetch('/api/live/date')
-        .then(res => res.text())
-        .then(message => {
-          this.setState({message: message});
-        });
-  }
-
-  render() {
+export default function App() {
     return (
-        <div className="App">
-          <header className="App-header">
-            <h1>{this.state.message}</h1>
-          </header>
-        </div>
-    );
-  }
-
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/characters" element={<CharacterList/>}/>
+                <Route path="/personas" element={<PersonaList/>}/>
+            </Routes>
+        </Router>
+    )
 }
-
-export default App;

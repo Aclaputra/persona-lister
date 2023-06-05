@@ -13,4 +13,6 @@ public interface CharacterRepository extends PagingAndSortingRepository<Characte
     public Character getById(@Param("id") Long id);
     @Query("select c from Character c")
     Page<Character> getAllData(Pageable pageable);
+    @Query("select c from Character c WHERE c.name = :name")
+    public Character findByName(String name);
 }
