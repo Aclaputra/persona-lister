@@ -1,26 +1,34 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+      message: ""
+  };
+
+  componentDidMount(): void {
+    setInterval(this.springData,250);
+  }
+
+  springData = (): void => {
+    fetch('/api/live/date')
+        .then(res => res.text())
+        .then(message => {
+          this.setState({message: message});
+        });
+  }
+
+  render() {
+    return (
+        <div className="App">
+          <header className="App-header">
+            <h1>{this.state.message}</h1>
+          </header>
+        </div>
+    );
+  }
+
 }
 
 export default App;

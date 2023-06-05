@@ -1,16 +1,6 @@
 server:
   port: 8081
 spring:
-  thymeleaf: # Thymeleaf
-    cache: false
-    mode: HTML
-    encoding: UTF-8
-    prefix: file:src/main/resources/templates/
-  web:
-    resources:
-      static-locations: file:src/main/resources/static/
-      cache:
-        period: 0
   jpa:
     show-sql: true
     hibernate:
