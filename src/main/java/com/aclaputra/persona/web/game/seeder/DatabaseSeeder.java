@@ -22,8 +22,8 @@ public class DatabaseSeeder implements ApplicationRunner {
 
 
     private String[] characters = new String[] {
-            "Makoto Yuki,Gekkoukan High School,https://static.wikia.nocookie.net/megamitensei/images/c/c6/Protagonist_%28Male%29.png/revision/latest/scale-to-width-down/177?cb=20230205052924",
-            "Kotone Shiomi,Gekkoukan High School,https://static.wikia.nocookie.net/megamitensei/images/3/31/Protagonist_%28Female%29.png/revision/latest/scale-to-width-down/164?cb=20230205052924"
+            "Makoto Yuki,Gekkoukan High School,https://s4.anilist.co/file/anilistcdn/character/large/b6203-1GHHULSWESJd.png",
+            "Kotone Shiomi,Gekkoukan High School,https://s3.zerochan.net/Female.Protagonist.%28PERSONA.3%29.240.3545202.jpg"
     };
 
     @Override

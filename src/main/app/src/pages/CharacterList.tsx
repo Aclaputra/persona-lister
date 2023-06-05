@@ -22,9 +22,8 @@ export function CharacterList() {
             },
         })
             .then(data => {
-                console.log(data.data.data.content[0])
+                // console.log(data.data.data.content[0])
                 setCharacters(data.data.data.content)
-                console.log(characters)
             })
             .catch(error => console.log(error))
     }
@@ -37,9 +36,13 @@ export function CharacterList() {
         <div className="characterlist">
             <h1>Character Lists on Persona 3 FES</h1>
             <div>
-            {
-                characters.map(item => (<p>{item.name}</p>))
-            }
+            {characters.map(item => (
+                <div>
+                    <p>{item.name}</p>
+                    <p>{item.location}</p>
+                    <img src={item.image} alt="img"/>
+                </div>
+            ))}
             </div>
         </div>
     )
