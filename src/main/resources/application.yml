@@ -1,6 +1,8 @@
 server:
   port: 8081
 spring:
+  thymeleaf:
+    prefix: file:///C:///Users//Muhammad Acla//work//persona-web-game//target//classes//static/
   jpa:
     show-sql: true
     hibernate:

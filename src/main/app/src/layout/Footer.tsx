@@ -1,8 +1,10 @@
 
 export function Footer() {
     return (
-        <footer>
-            <h1>this is footer.</h1>
+        <footer className="navbar bg-body-tertiary">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="#">Footer</a>
+            </div>
         </footer>
     )
 }

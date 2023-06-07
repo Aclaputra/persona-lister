@@ -1,8 +1,10 @@
 
 export function Navbar() {
     return (
-        <div className="navbar">
-            <h1>Navbar</h1>
-        </div>
+        <nav className="navbar bg-body-tertiary">
+            <div className="container-fluid">
+                <a className="navbar-brand" href="#">Persona 3 FES</a>
+            </div>
+        </nav>
     )
 }

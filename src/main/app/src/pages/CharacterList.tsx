@@ -1,49 +1,32 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 // @ts-ignore
 import axios, {AxiosResponse} from 'axios';
+import {List} from "../components/List";
 
 export function CharacterList() {
-    interface Characters {
-        id : number;
-        name : string;
-        location : string;
-        image : string;
+
+
+    const [inputSearchBar, setInputSearchBar] = useState("");
+
+    const inputHandler = async (e: { target: { value: string; }; }): Promise<any> => {
+        const lowerCase = e.target.value.toLowerCase();
+        await setInputSearchBar(lowerCase)
     }
-
-    const [characters, setCharacters] = useState<Characters[]>([]);
-
-    const loadCharacters = async (): Promise<any> => {
-        await axios({
-            url: "http://localhost:8081/api/v1/character/list?page=0&size=2",
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                // "Authorization": "token"
-            },
-        })
-            .then(data => {
-                // console.log(data.data.data.content[0])
-                setCharacters(data.data.data.content)
-            })
-            .catch(error => console.log(error))
-    }
-
-    useEffect((): void => {
-        loadCharacters().catch(e => console.log(e));
-    }, []);
 
     return (
         <div className="characterlist">
-            <h1>Character Lists on Persona 3 FES</h1>
-            <div>
-            {characters.map(item => (
-                <div>
-                    <p>{item.name}</p>
-                    <p>{item.location}</p>
-                    <img src={item.image} alt="img"/>
-                </div>
-            ))}
+            <div className="container-sm">
+                <h1>Character Lists on Persona 3 FES</h1>
+                {/* search bar*/}
+                <form className="d-flex container p-4" role="search">
+                    <input onChange={inputHandler} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                    <button className="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
+
+            <div className="d-flex">
+            </div>
+            <List input={inputSearchBar}/>
         </div>
     )
 }
