@@ -11,8 +11,9 @@ export function List(props: any) {
     const [characters, setCharacters] = useState<Characters[]>([]);
 
     // NOTE : buat state characters dapat di search dan di tampilkan pad jsx
-    const [filteredData, setFilteredData] = useState<Characters[]>(props.input);
-    const [wordEntered, setWordEntered] = useState<string>("");
+    const [searchInput, setSearchInput] = useState('');
+    let [filteredData, setFilteredData] = useState<String>("");
+
 
     const loadCharacters = async (): Promise<any> => {
         await axios({
@@ -29,6 +30,34 @@ export function List(props: any) {
             })
             .catch(error => console.log(error))
     }
+
+    const characterToLowerCase = async () => {
+        characters.filter((item) => {
+            console.log("test + " + item.name)
+            // if (item.name == props.input) {
+            //     console.log("found " + item.name)
+            // }
+            return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+        })
+    }
+
+
+    // const filteredData: Characters[] = characters.filter((item: Characters) => {
+    //     return item
+    //     // return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+    // })
+
+    // const filterData = (input: string) => {
+    //     console.log("hello " + props.input)
+    //     characters.filter((item) => {
+    //         if (String(item) == input) {
+    //             // @ts-ignore
+    //             setFilteredData = item
+    //             console.log(item)
+    //         }
+    //     })
+    // }
+
     // const filteredData = characters.filter((el) => {
     //     if (props.input === '') {
     //         console.log(el)
@@ -41,9 +70,12 @@ export function List(props: any) {
 
     useEffect((): void => {
         loadCharacters().catch(e => console.log(e));
+        characterToLowerCase()
+        // filterData(props.input)
     }, []);
+    // @ts-ignore
+
     return (
-        // @ts-ignore
         <div className="">
             <h1>searched data</h1>
             {/*{filteredData.map((item : Characters, index: number) => {*/}
@@ -51,23 +83,54 @@ export function List(props: any) {
             {/*        <li key="name_{index}">{item.name}</li>*/}
             {/*    </ul>*/}
             {/*})}*/}
+            {
+                props.input
+            }
+            <h1>filtered data{filteredData}</h1>
+            <h1>{searchInput}</h1>
             <hr/>
             <div className="d-flex">
                 {/* NOTE: manual iterasi data */}
-                {characters.map(item => (
-                    <div className="d-flex">
-                        <img src={item.image} className="border border-success p-2 mb-2 border-opacity-25 rounded-circle shadow-lg"alt="img" width="250"/>
-                        <div className="fw-bold">
-                            <p className="text-uppercase">{item.name}</p>
-                            <p>from {item.location}<br></br>
-                                having Fool Persona<br/>
-                                likes to do Foolish Things<br/>
-                                he is a main character<br/>
-                                and protagonist in Persona 3 FES
-                            </p>
-                        </div>
-                    </div>
-                ))}
+                {/*{characters.map(item => (*/}
+                {/*    <div className="d-flex">*/}
+                {/*        <img src={item.image} className="border border-success p-2 mb-2 border-opacity-25 rounded-circle shadow-lg"alt="img" width="250"/>*/}
+                {/*        <div className="fw-bold">*/}
+                {/*            <p className="text-uppercase">{item.name}</p>*/}
+                {/*            <p>from {item.location}<br></br>*/}
+                {/*                having Fool Persona<br/>*/}
+                {/*                likes to do Foolish Things<br/>*/}
+                {/*                he is a main character<br/>*/}
+                {/*                and protagonist in Persona 3 FES*/}
+                {/*            </p>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*))}*/}
+                {characters.map(item => {
+                    if (props.input == item.name.toLowerCase()) {
+                        return (
+                            <div className="d-flex">
+                                <img src={item.image} className="border border-success p-2 mb-2 border-opacity-25 rounded-circle shadow-lg"alt="img" width="250"/>
+                                <div className="fw-bold">
+                                    <p className="text-uppercase">{item.name}</p>
+                                    <p>from {item.location}<br></br>
+                                        having Fool Persona<br/>
+                                        likes to do Foolish Things<br/>
+                                        he is a main character<br/>
+                                        and protagonist in Persona 3 FES
+                                    </p>
+                                </div>
+                            </div>
+                        )
+                    } else {
+                        return (
+                            // bisa ke search jika nama benar benar "makoto yuki" not "makoto" 
+                            <div>
+                                {item.name.toLowerCase()}
+                            </div>
+                        )
+                    }
+
+                }) }
             </div>
         </div>
     )
