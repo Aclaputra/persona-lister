@@ -15,21 +15,28 @@ export function CharacterList() {
     }
 
     return (
-        <div className="characterlist">
+        <div className="characterlist bg-dark text-secondary">
             <div className="container-sm">
-                <h1>Character Lists on Persona 3 FES</h1>
+                {/*<h1 className="text-center"
 
                 {/* search bar*/}
                 <form className="d-flex container p-4" role="search">
                     <input onChange={(e) => inputHandler(e.target.value)} value={inputSearchBar}
                            className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success" type="submit">Search</button>
+                    {/*<button className="btn btn-outline-success" type="submit">Search</button>*/}
+                    <div className="input-group">
+                        <label className="input-group-text" htmlFor="inputGroupSelect01">Sort By Location</label>
+                        <select className="form-select" id="inputGroupSelect01">
+                            <option defaultValue="location">Location</option>
+                            <option value="gekkoukan high school">Gekkoukan High School</option>
+                        </select>
+                    </div>
                 </form>
 
             </div>
 
-            <div className="d-flex">
-            </div>
+            {/*<div className="d-flex">*/}
+            {/*</div>*/}
             <List input={inputSearchBar}/>
         </div>
     )

@@ -1,9 +1,12 @@
 
 export function Navbar() {
     return (
-        <nav className="navbar bg-body-tertiary">
+        <nav className="navbar bg-dark text-light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Persona 3 FES</a>
+                <div className="container row">
+                    <a className="navbar-brand text-light" href="#">Game Fun Fact</a>
+                    <span className="text-secondary">your game info forum 🎮</span>
+                </div>
             </div>
         </nav>
     )
