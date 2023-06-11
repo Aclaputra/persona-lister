@@ -44,9 +44,9 @@ export function List(props: any) {
         <div className="">
             {/*<h1>searched data</h1>*/}
             <hr/>
-            <div className="d-flex justify-content-around">
+            <div className="d-flex justify-content-around flex-wrap">
                 {filteredItems.length >= 0 ? filteredItems.map((character) => (
-                    <div key={character.id} className="container bg-secondary rounded d-flex text-light shadow-lg p-4">
+                    <div key={character.id} className="container bg-secondary rounded d-flex text-light shadow-lg p-4 m-2">
                         <img src={character.image} alt={character.name} className="rounded shadow-lg"/>
                         <div className="container">
                             <h2>{character.name}</h2>

@@ -20,11 +20,11 @@ export function CharacterList() {
                 {/*<h1 className="text-center"
 
                 {/* search bar*/}
-                <form className="d-flex container p-4" role="search">
+                <form className="d-flex container p-4 flex-column" role="search">
                     <input onChange={(e) => inputHandler(e.target.value)} value={inputSearchBar}
                            className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                     {/*<button className="btn btn-outline-success" type="submit">Search</button>*/}
-                    <div className="input-group">
+                    <div className="input-group pt-2">
                         <label className="input-group-text" htmlFor="inputGroupSelect01">Sort By Location</label>
                         <select className="form-select" id="inputGroupSelect01">
                             <option defaultValue="location">Location</option>
