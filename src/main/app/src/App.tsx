@@ -15,7 +15,7 @@ import {Footer} from "./layout/Footer";
 export default function App() {
     return (
         <Router>
-            <Navbar/>
+            {/*<Navbar/>*/}
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/characters" element={<CharacterList/>}/>

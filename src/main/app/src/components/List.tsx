@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {Navbar} from "../layout/Navbar";
 
 export function List(props: any) {
     interface Characters {
@@ -42,11 +43,11 @@ export function List(props: any) {
 
     return (
         <div className="">
-            {/*<h1>searched data</h1>*/}
+            <Navbar/>
             <hr/>
             <div className="d-flex justify-content-around flex-wrap">
                 {filteredItems.length >= 0 ? filteredItems.map((character) => (
-                    <div key={character.id} className="container bg-secondary rounded d-flex text-light shadow-lg p-4 m-2">
+                    <div key={character.id} className="container bg-secondary rounded d-flex text-light shadow-lg p-4 my-2">
                         <img src={character.image} alt={character.name} className="rounded shadow-lg"/>
                         <div className="container">
                             <h2>{character.name}</h2>
@@ -55,7 +56,7 @@ export function List(props: any) {
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias error harum quam quisquam reiciendis voluptate? Animi, aperiam blanditiis dolore ducimus fuga hic laboriosam libero magnam non repellat rerum temporibus veniam?</p>
                         </div>
                     </div>
-                )): <div>hello</div>}
+                )): <div>Items Not Found.</div>}
 
             </div>
         </div>
